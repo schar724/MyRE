@@ -1,9 +1,3 @@
-#######################################
-# Lab code for COMP 2613, Fall 2022
-# Janet Leahy
-# Nov. 10, 2022
-#######################################
-
 class State:
     def __init__(self, suc, transitions = []):
         self.success = suc                  # boolean indicating whether State is a success state

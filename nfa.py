@@ -1,10 +1,3 @@
-#######################################
-# Lab code for COMP 2613, Fall 2022
-# Janet Leahy
-# Oct. 20, 2022
-#######################################
-
-
 from asyncio.windows_events import NULL
 from typing_extensions import Self
 

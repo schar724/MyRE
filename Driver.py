@@ -1,13 +1,3 @@
-#########################################################
-#
-#   Driver file for Assignment 3
-#
-#   COMP 2613, Fall 2022
-#   Janet Leahy
-#
-#########################################################
-
-# import your custom module
 import myre
 
 instr = "abbb"
