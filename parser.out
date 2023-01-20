@@ -1,0 +1,221 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> E
+Rule 1     E -> E OR T
+Rule 2     E -> T
+Rule 3     T -> T F
+Rule 4     T -> F
+Rule 5     F -> LPAREN E RPAREN
+Rule 6     F -> F STAR
+Rule 7     F -> LETTER
+Rule 8     F -> EPS
+
+Terminals, with rules where they appear
+
+EPS                  : 8
+LETTER               : 7
+LPAREN               : 5
+OR                   : 1
+RPAREN               : 5
+STAR                 : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+E                    : 1 5 0
+F                    : 3 4 6
+T                    : 1 2 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . E
+    (1) E -> . E OR T
+    (2) E -> . T
+    (3) T -> . T F
+    (4) T -> . F
+    (5) F -> . LPAREN E RPAREN
+    (6) F -> . F STAR
+    (7) F -> . LETTER
+    (8) F -> . EPS
+
+    LPAREN          shift and go to state 4
+    LETTER          shift and go to state 5
+    EPS             shift and go to state 6
+
+    E                              shift and go to state 1
+    T                              shift and go to state 2
+    F                              shift and go to state 3
+
+state 1
+
+    (0) S' -> E .
+    (1) E -> E . OR T
+
+    OR              shift and go to state 7
+
+
+state 2
+
+    (2) E -> T .
+    (3) T -> T . F
+    (5) F -> . LPAREN E RPAREN
+    (6) F -> . F STAR
+    (7) F -> . LETTER
+    (8) F -> . EPS
+
+    OR              reduce using rule 2 (E -> T .)
+    $end            reduce using rule 2 (E -> T .)
+    RPAREN          reduce using rule 2 (E -> T .)
+    LPAREN          shift and go to state 4
+    LETTER          shift and go to state 5
+    EPS             shift and go to state 6
+
+    F                              shift and go to state 8
+
+state 3
+
+    (4) T -> F .
+    (6) F -> F . STAR
+
+    LPAREN          reduce using rule 4 (T -> F .)
+    LETTER          reduce using rule 4 (T -> F .)
+    EPS             reduce using rule 4 (T -> F .)
+    OR              reduce using rule 4 (T -> F .)
+    $end            reduce using rule 4 (T -> F .)
+    RPAREN          reduce using rule 4 (T -> F .)
+    STAR            shift and go to state 9
+
+
+state 4
+
+    (5) F -> LPAREN . E RPAREN
+    (1) E -> . E OR T
+    (2) E -> . T
+    (3) T -> . T F
+    (4) T -> . F
+    (5) F -> . LPAREN E RPAREN
+    (6) F -> . F STAR
+    (7) F -> . LETTER
+    (8) F -> . EPS
+
+    LPAREN          shift and go to state 4
+    LETTER          shift and go to state 5
+    EPS             shift and go to state 6
+
+    E                              shift and go to state 10
+    T                              shift and go to state 2
+    F                              shift and go to state 3
+
+state 5
+
+    (7) F -> LETTER .
+
+    STAR            reduce using rule 7 (F -> LETTER .)
+    LPAREN          reduce using rule 7 (F -> LETTER .)
+    LETTER          reduce using rule 7 (F -> LETTER .)
+    EPS             reduce using rule 7 (F -> LETTER .)
+    OR              reduce using rule 7 (F -> LETTER .)
+    $end            reduce using rule 7 (F -> LETTER .)
+    RPAREN          reduce using rule 7 (F -> LETTER .)
+
+
+state 6
+
+    (8) F -> EPS .
+
+    STAR            reduce using rule 8 (F -> EPS .)
+    LPAREN          reduce using rule 8 (F -> EPS .)
+    LETTER          reduce using rule 8 (F -> EPS .)
+    EPS             reduce using rule 8 (F -> EPS .)
+    OR              reduce using rule 8 (F -> EPS .)
+    $end            reduce using rule 8 (F -> EPS .)
+    RPAREN          reduce using rule 8 (F -> EPS .)
+
+
+state 7
+
+    (1) E -> E OR . T
+    (3) T -> . T F
+    (4) T -> . F
+    (5) F -> . LPAREN E RPAREN
+    (6) F -> . F STAR
+    (7) F -> . LETTER
+    (8) F -> . EPS
+
+    LPAREN          shift and go to state 4
+    LETTER          shift and go to state 5
+    EPS             shift and go to state 6
+
+    T                              shift and go to state 11
+    F                              shift and go to state 3
+
+state 8
+
+    (3) T -> T F .
+    (6) F -> F . STAR
+
+    LPAREN          reduce using rule 3 (T -> T F .)
+    LETTER          reduce using rule 3 (T -> T F .)
+    EPS             reduce using rule 3 (T -> T F .)
+    OR              reduce using rule 3 (T -> T F .)
+    $end            reduce using rule 3 (T -> T F .)
+    RPAREN          reduce using rule 3 (T -> T F .)
+    STAR            shift and go to state 9
+
+
+state 9
+
+    (6) F -> F STAR .
+
+    STAR            reduce using rule 6 (F -> F STAR .)
+    LPAREN          reduce using rule 6 (F -> F STAR .)
+    LETTER          reduce using rule 6 (F -> F STAR .)
+    EPS             reduce using rule 6 (F -> F STAR .)
+    OR              reduce using rule 6 (F -> F STAR .)
+    $end            reduce using rule 6 (F -> F STAR .)
+    RPAREN          reduce using rule 6 (F -> F STAR .)
+
+
+state 10
+
+    (5) F -> LPAREN E . RPAREN
+    (1) E -> E . OR T
+
+    RPAREN          shift and go to state 12
+    OR              shift and go to state 7
+
+
+state 11
+
+    (1) E -> E OR T .
+    (3) T -> T . F
+    (5) F -> . LPAREN E RPAREN
+    (6) F -> . F STAR
+    (7) F -> . LETTER
+    (8) F -> . EPS
+
+    OR              reduce using rule 1 (E -> E OR T .)
+    $end            reduce using rule 1 (E -> E OR T .)
+    RPAREN          reduce using rule 1 (E -> E OR T .)
+    LPAREN          shift and go to state 4
+    LETTER          shift and go to state 5
+    EPS             shift and go to state 6
+
+    F                              shift and go to state 8
+
+state 12
+
+    (5) F -> LPAREN E RPAREN .
+
+    STAR            reduce using rule 5 (F -> LPAREN E RPAREN .)
+    LPAREN          reduce using rule 5 (F -> LPAREN E RPAREN .)
+    LETTER          reduce using rule 5 (F -> LPAREN E RPAREN .)
+    EPS             reduce using rule 5 (F -> LPAREN E RPAREN .)
+    OR              reduce using rule 5 (F -> LPAREN E RPAREN .)
+    $end            reduce using rule 5 (F -> LPAREN E RPAREN .)
+    RPAREN          reduce using rule 5 (F -> LPAREN E RPAREN .)
+
